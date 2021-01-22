@@ -70,11 +70,14 @@ run_command_parameters = {
     ]
 }
 
+print('Command "' + run_command + '" will be executed on the VM.')
+
 async_vm_run_command = compute_client.virtual_machines.run_command(
     resource_group_name,
     vm_name,
     run_command_parameters
 )
 
-print('Command "' + run_command + '" will be executed on the VM.')
+print(async_vm_run_command.result().value[0].message)
+
 print('Command executed')

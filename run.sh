@@ -1,26 +1,12 @@
-echo "********************"
-echo "** Run & Shutdown **"
-echo "********************"
-
-
+echo "****** Script Started ******"
+echo `date`
 if [ $# -eq 0 ]
 then
-
     echo "No commands given."
-    echo "Skipping deallocation."
-
 else
-
+    echo "Command: $@"
     $@
+    echo "Command executed."
 
-    # Login as VM managed identity
-    az login --identity
-
-    # Grab info to deallocate VM
-    resource_group=`az group list | jq -r '.[0].name'`
-    vm_name=`hostnamectl | grep hostname | awk '{ print $3 }'`
-
-    # Deallocate VM
-    az vm deallocate -g $resource_group -n $vm_name
-
+    ./shutdown.sh&
 fi
