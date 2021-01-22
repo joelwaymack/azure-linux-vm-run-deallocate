@@ -8,5 +8,7 @@ else
     $@
     echo "Command executed."
 
-    ./shutdown.sh&
+    DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+
+    $DIR/shutdown.sh&
 fi
