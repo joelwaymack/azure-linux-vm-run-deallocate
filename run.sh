@@ -10,5 +10,6 @@ else
 
     DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
+    echo "Shutting down in 10 seconds..."
     $DIR/shutdown.sh&
 fi

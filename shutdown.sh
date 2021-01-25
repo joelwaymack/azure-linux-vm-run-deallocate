@@ -9,5 +9,4 @@ resource_group=`az group list | grep name | awk '{ print $2 }' | grep -oP '"\K[^
 vm_name=`hostnamectl | grep hostname | awk '{ print $3 }'`
 
 # Deallocate VM
-echo "Deallocating VM." >> ./run.log
 az vm deallocate -g $resource_group -n $vm_name
